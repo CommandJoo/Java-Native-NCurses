@@ -3,14 +3,13 @@ package de.johannes.snake;
 import de.johannes.curses.Curses;
 import de.johannes.curses.CursesConstants;
 import de.johannes.curses.nerdfont.NFFontAwesome;
+import de.johannes.curses.ui.base.Component;
 import de.johannes.curses.util.ColorBuilder;
 import de.johannes.curses.util.Timer;
 import de.johannes.curses.ui.components.Window;
+import lombok.NonNull;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class SnakeWindow extends Window {
 
@@ -26,7 +25,8 @@ public class SnakeWindow extends Window {
     private static final int START_SIZE = 4;
 
     public SnakeWindow(Window parent, String title, int x, int y, int width, int height, int color) {
-        super(parent, title, x, y, width, height, color, color);
+        super(parent, title, x, y, width, height, color, color, false);
+
         this.gameTimer = new Timer();
         this.player = new ArrayList<>();
         this.food = new ArrayList<>();
@@ -34,9 +34,6 @@ public class SnakeWindow extends Window {
         this.foodColor = CursesConstants.DARK_RED;
         this.dead = false;
         this.init();
-    }
-
-    public SnakeWindow() {
     }
 
     @Override

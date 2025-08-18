@@ -1,16 +1,22 @@
 package de.johannes.curses.ui.base;
 
-public abstract class TextComponent extends BoxComponent {
+import de.johannes.curses.CursesConstants;
+import de.johannes.curses.ui.components.Text;
+import de.johannes.curses.ui.components.Window;
+
+public class TextComponent extends BoxComponent {
 
     protected String text;
 
-    public TextComponent() {
-        super();
-        this.text = "";
-        this.width = 0;
-        this.height = 1;
-        this.rounded = false;
+    public TextComponent(Window parent, int x, int y, int width, int height, int color, int hoverColor, String text) {
+        super(parent, x, y, width, height, color, hoverColor);
+        this.text = text;
     }
+
+    public static TextComponent of(Window parent, int x, int y, int color, int hoverColor, String text) {
+        return new TextComponent(parent, x, y, 0, 1, color, hoverColor, text);
+    }
+
 
     @Override
     public void drawBox() {}

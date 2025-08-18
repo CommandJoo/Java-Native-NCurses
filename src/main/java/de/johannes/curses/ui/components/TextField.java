@@ -14,6 +14,14 @@ public class TextField extends BoxComponent {
     protected StringBuilder input;
     protected Timer blinker;
 
+    public TextField(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        super(parent, x, y, width, height, color, hoverColor);
+    }
+
+    public static TextField of(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        return new TextField(parent, x, y, width, height, color, hoverColor);
+    }
+
     @Override
     public void init() {
         input = new StringBuilder();

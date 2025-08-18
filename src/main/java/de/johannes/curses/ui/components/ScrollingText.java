@@ -8,6 +8,14 @@ public class ScrollingText extends TextComponent {
 
     private int speed = 100;
 
+    public ScrollingText(Window parent, int x, int y, int width, int height, int color, int hoverColor, String text) {
+        super(parent, x, y, width, height, color, hoverColor, text);
+    }
+
+    public static ScrollingText of(Window parent, int x, int y, int color, int hoverColor, String text) {
+        return new ScrollingText(parent, x, y, 0, 1, color, hoverColor,text);
+    }
+
     @Override
     public void init() {
         this.scrollTimer = new Timer();

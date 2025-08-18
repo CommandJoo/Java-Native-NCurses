@@ -13,6 +13,14 @@ public class Link extends TextComponent {
 
     private String display, url;
 
+    public Link(Window parent, int x, int y, int width, int height, int color, int hoverColor, String text) {
+        super(parent, x, y, width, height, color, hoverColor, text);
+    }
+
+    public static Link of(Window parent, int x, int y, int color, int hoverColor, String text) {
+        return new Link(parent, x, y, 0, 1, color, hoverColor,text);
+    }
+
     public Link display(String display, String url) {
         this.display = display;
         this.url = url;

@@ -2,18 +2,28 @@ package de.johannes.curses.ui.base;
 
 import de.johannes.curses.Curses;
 import de.johannes.curses.ui.UI;
+import de.johannes.curses.ui.components.Window;
 import de.johannes.curses.util.Pair;
 
-public abstract class BoxComponent extends Component {
+public class BoxComponent extends Component {
 
     protected int width, height;
+
     protected boolean rounded;
 
-    public BoxComponent() {
-        super();
-        this.width = 0;
-        this.height = 0;
-        this.rounded = false;
+    public BoxComponent(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        super(parent, x, y, color, hoverColor);
+        this.width = width;
+        this.height = height;
+    }
+
+    public static BoxComponent of(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        return new BoxComponent(parent, x, y, width, height, color, hoverColor);
+    }
+
+    public BoxComponent rounded(boolean rounded) {
+        this.rounded = rounded;
+        return this;
     }
 
     public int width() {

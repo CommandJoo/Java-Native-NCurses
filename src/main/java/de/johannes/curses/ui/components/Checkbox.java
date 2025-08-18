@@ -7,12 +7,21 @@ import de.johannes.curses.nerdfont.NFCodicons;
 import de.johannes.curses.nerdfont.NFOcticons;
 import de.johannes.curses.ui.base.BoxComponent;
 import de.johannes.curses.ui.base.TextComponent;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 public class Checkbox extends BoxComponent {
 
     private boolean selected;
 
-    public Checkbox() {}
+    public Checkbox(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        super(parent, x, y, width, height, color, hoverColor);
+    }
+
+    public static Checkbox of(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        return new Checkbox(parent, x, y, width, height, color, hoverColor);
+    }
 
     @Override
     public void init() {}

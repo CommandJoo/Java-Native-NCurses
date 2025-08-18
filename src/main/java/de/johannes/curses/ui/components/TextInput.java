@@ -12,6 +12,14 @@ public class TextInput extends TextComponent {
     protected StringBuilder input;
     protected Timer blinker;
 
+    public TextInput(Window parent, int x, int y, int width, int height, int color, int hoverColor, String text) {
+        super(parent, x, y, width, height, color, hoverColor, text);
+    }
+
+    public static TextInput of(Window parent, int x, int y, int color, int hoverColor, String text) {
+        return new TextInput(parent, x, y, 0, 1, color, hoverColor, text);
+    }
+
     @Override
     public void init() {
         input = new StringBuilder();

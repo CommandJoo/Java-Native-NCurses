@@ -11,17 +11,17 @@ import java.util.List;
 
 public class Text extends TextComponent {
 
+    private Window parent;
     private String text;
-    private List<Integer> attributes;
-    private List<Text> chain;
+    private List<Integer> attributes = new ArrayList<>();
+    private List<Text> chain = new ArrayList<>();
 
-    public Text() {
-        this.attributes = new ArrayList<>();
-        this.chain = new ArrayList<>();
+    public Text(Window parent, int x, int y, int width, int height, int color, int hoverColor, String text) {
+        super(parent, x, y, width, height, color, hoverColor, text);
     }
 
     public static Text of(String text) {
-        Text txt = new Text();
+        Text txt = new Text(null, 0,0,0,0,0,0, "");
         txt.text = text;
         return txt;
     }

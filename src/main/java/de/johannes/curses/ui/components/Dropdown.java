@@ -6,12 +6,23 @@ import de.johannes.curses.Keys;
 import de.johannes.curses.Mouse;
 import de.johannes.curses.ui.base.BoxComponent;
 import de.johannes.curses.util.Pair;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 public class Dropdown extends BoxComponent {
 
     private String[] values;
     private int index;
     private boolean open;
+
+    public Dropdown(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        super(parent, x, y, width, height, color, hoverColor);
+    }
+
+    public static Dropdown of(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        return new Dropdown(parent, x, y, width, height, color, hoverColor);
+    }
 
     public Dropdown values(String... values) {
         this.values = values;

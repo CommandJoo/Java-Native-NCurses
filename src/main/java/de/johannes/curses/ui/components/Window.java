@@ -9,6 +9,10 @@ import de.johannes.curses.ui.WindowManager;
 import de.johannes.curses.ui.base.BoxComponent;
 import de.johannes.curses.ui.base.Component;
 import de.johannes.curses.util.ColorBuilder;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -17,29 +21,23 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
-public abstract class Window extends BoxComponent {
+public class Window extends BoxComponent {
 
     public String title = "";
-    private final HashMap<Integer, Component> components;
-    private boolean closeable;
 
-    public Window(Window parent, String title, int x, int y, int width, int height, int color, int hoverColor) {
-        this();
-        this.parent = parent;
+    public Window(Window parent, String title, int x, int y, int width, int height, int color, int hoverColor, boolean closeable) {
+        super(parent, x, y, width, height, color, hoverColor);
         this.title = title;
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.color = color;
-        this.originalColor = color;
-        this.hoverColor = hoverColor;
+        this.closeable = closeable;
         this.init();
     }
 
-    public Window() {
-        this.components = new HashMap<>();
+    public static Window of(Window parent, String title, int x, int y, int width, int height, int color, int hoverColor, boolean closeable) {
+        return new Window(parent, title, x, y, width, height, color, hoverColor, closeable);
     }
+
+    private final HashMap<Integer, Component> components = new HashMap<>();;
+    private boolean closeable = false;
 
     public void drawWindow() {
         drawBox();

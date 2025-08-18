@@ -13,8 +13,14 @@ public class Listable extends BoxComponent {
 
     private int maxHeight;
 
-    public Listable() {
+    public Listable(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        super(parent, x, y, width, height, color, hoverColor);
     }
+
+    public static Listable of(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        return new Listable(parent, x, y, width, height, color, hoverColor);
+    }
+
 
     public Listable content(String... content) {
         this.content = content;

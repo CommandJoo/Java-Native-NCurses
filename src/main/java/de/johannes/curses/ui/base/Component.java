@@ -6,12 +6,28 @@ import de.johannes.curses.ui.UI;
 import de.johannes.curses.ui.components.Window;
 import de.johannes.curses.util.ColorBuilder;
 
-public abstract class Component {
+public class Component {
 
-    protected Window parent;
+    protected final Window parent;
     protected int x, y;
-    protected int color, originalColor, hoverColor;
-    protected int renderColor;
+    protected int color, originalColor;
+    protected int hoverColor;
+
+    public Component(Window parent, int x, int y, int color, int hoverColor) {
+        this.parent = parent;
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.originalColor = color;
+        this.hoverColor = hoverColor;
+        if(!(this instanceof Window)) {
+            this.init();
+        }
+    }
+
+    public static Component of(Window parent, int x, int y, int color, int hoverColor) {
+        return new Component(parent, x, y, color, hoverColor);
+    }
 
     public Component() {
         this.parent = null;
@@ -38,11 +54,11 @@ public abstract class Component {
         return color;
     }
 
-    public abstract void init();
-    public abstract void draw();
-    public abstract boolean handleKey(char ch);
-    public abstract boolean handleClick(Mouse mouse);
-    public abstract boolean handleHover(int x, int y);
+    public void init() {}
+    public void draw() {}
+    public boolean handleKey(char ch) {return false;}
+    public boolean handleClick(Mouse mouse) {return false;}
+    public boolean handleHover(int x, int y) {return false;}
     public void drawString(int x, int y, String s, int color) {
         UI.drawString(s, this.x() + x, this.y() + y, color);
     }

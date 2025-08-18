@@ -6,6 +6,9 @@ import de.johannes.curses.Mouse;
 import de.johannes.curses.MouseLocation;
 import de.johannes.curses.ui.base.BoxComponent;
 import de.johannes.curses.util.Timer;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.function.Consumer;
 
@@ -14,7 +17,14 @@ public class Button extends BoxComponent {
     private String text;
     private boolean selected;
     private Consumer<Mouse> executor;
-    public Button() {}
+
+    public Button(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        super(parent, x, y, width, height, color, hoverColor);
+    }
+
+    public static Button of(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        return new Button(parent, x, y, width, height, color, hoverColor);
+    }
 
     @Override
     public void init() {

@@ -2,6 +2,14 @@ package de.johannes.curses.ui.components;
 
 public class PasswordField extends TextField {
 
+    public PasswordField(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        super(parent, x, y, width, height, color, hoverColor);
+    }
+
+    public static PasswordField of(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        return new PasswordField(parent, x, y, width, height, color, hoverColor);
+    }
+
     @Override
     public void draw() {
         this.drawBox();

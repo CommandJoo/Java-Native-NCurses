@@ -10,6 +10,14 @@ public class Selector extends BoxComponent {
     private String[] values;
     private int index;
 
+    public Selector(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        super(parent, x, y, width, height, color, hoverColor);
+    }
+
+    public static Selector of(Window parent, int x, int y, int width, int height, int color, int hoverColor) {
+        return new Selector(parent, x, y, width, height, color, hoverColor);
+    }
+
     public Selector values(String... values) {
         this.values = values;
         return this;

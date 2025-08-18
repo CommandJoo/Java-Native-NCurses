@@ -3,12 +3,14 @@ package de.johannes.example;
 import de.johannes.curses.Curses;
 import de.johannes.curses.util.ColorBuilder;
 import de.johannes.curses.ui.components.Window;
+import lombok.NonNull;
 
 import java.awt.*;
 
 public class ColorTest extends Window {
+
     public ColorTest() {
-//        super(null, 0, 0, Curses.width() - 1, Curses.height() - 1);
+        super(null, "Colors", 0, 0, Curses.width()-1, Curses.height()-1, 1, 1, false);
     }
 
     @Override

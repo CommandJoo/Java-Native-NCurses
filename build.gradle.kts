@@ -21,6 +21,9 @@ dependencies {
     implementation("com.google.code.gson:gson:2.11.0")
     implementation("commons-io:commons-io:2.18.0")
 
+    compileOnly("org.projectlombok:lombok:1.18.36")
+    annotationProcessor("org.projectlombok:lombok:1.18.36")
+
     implementation(fileTree(mapOf("dir" to "src/native", "include" to listOf("*.so"))))
     implementation(fileTree(mapOf("dir" to "src/native", "include" to listOf("*.dll"))))
 }
